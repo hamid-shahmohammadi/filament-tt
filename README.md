@@ -3,7 +3,14 @@
 php artisan make:filament-resource Role
 ```
 ## Models/Role.php
+```
+use Spatie\Permission\Models\Role as ModelsRole;
 
+class Role extends ModelsRole
+{
+    use HasFactory;
+}
+```
 ## app/Filament/Resources/RoleResource.php
 ```
 return $form
