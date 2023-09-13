@@ -16,4 +16,5 @@ class Permission extends ModelsPermission
 ##
 ```
 php artisan make:filament-resource Permission --generate
+php artisan make:filament-resource User --generate
 ```
