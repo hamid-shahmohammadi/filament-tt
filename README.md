@@ -48,3 +48,61 @@ php artisan make:filament-resource User --generate
                 TextColumn::make('name')
             ])
 ```
+## app/Filament/Resources/UserResource.php
+```
+class UserResource extends Resource
+{
+    protected static ?string $navigationGroup = 'تنظیمات';
+    protected static ?string $model = User::class;
+
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
+    protected static ?int $navigationSort = 1;
+
+    public static function form(Form $form): Form
+    {
+        return $form
+            ->schema([
+                Card::make()->schema([
+                    Forms\Components\TextInput::make('name')
+                        ->required()
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('email')
+                        ->email()
+                        ->required()
+                        ->maxLength(255),
+                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                    Forms\Components\TextInput::make('password')
+                        ->password()
+                        ->dehydrateStateUsing(fn (string $state): string => Hash::make($state))
+                        ->dehydrated(fn (?string $state): bool => filled($state))
+                        ->required(fn (string $operation): bool => $operation === 'create')
+                        ->maxLength(255),
+                    Select::make('roles')
+                        ->multiple()
+                        ->relationship('roles', 'name')
+                        ->preload(),
+                ])->columns(2)
+            ]);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return $table
+            ->columns([
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('email')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('email_verified_at')
+                    ->dateTime()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+            ])
+```
