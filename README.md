@@ -1,3 +1,7 @@
+## cmd
+```
+php artisan make:filament-resource Customer --generate
+```
 ## /home/shah/sec/filament-tt/app/Models/Category.php
 ```
 protected $fillable=['parent_id','name','slug','description','position',
