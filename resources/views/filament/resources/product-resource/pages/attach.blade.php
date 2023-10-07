@@ -28,7 +28,7 @@
         <div>
 
         <button class="bg-primary-600 text-white py-2.5 px-3 my-2 rounded block" type="submit">Upload</button>
-        <button type="button" class="bg-danger-600 text-white py-2.5 px-3 my-2 rounded block">Default</button>
+        <button type="button" class="btn-primary">Default</button>
 
         </div>
     </form>
