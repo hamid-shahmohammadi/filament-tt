@@ -1,3 +1,4 @@
+# filament-relation-manager
 ## cmd
 ```
 php artisan make:filament-relation-manager CategoryResource products name
