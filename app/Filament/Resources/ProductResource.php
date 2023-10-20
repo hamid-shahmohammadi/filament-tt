@@ -14,11 +14,14 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ProductResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ProductResource\RelationManagers;
+use App\Filament\Resources\ProductResource\Pages\AttachProduct;
+
 
 class ProductResource extends Resource
 {
@@ -67,6 +70,8 @@ class ProductResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+                Tables\Actions\Action::make('attach')->label('Attach')
+                ->url(fn(Model $record):string => route('filament.admin.resources.products.attach',['record'=>$record]))
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -91,6 +96,7 @@ class ProductResource extends Resource
             'index' => Pages\ListProducts::route('/'),
             'create' => Pages\CreateProduct::route('/create'),
             'edit' => Pages\EditProduct::route('/{record}/edit'),
+            'attach' => AttachProduct::route('/{record}/attach')
         ];
     }
 }
