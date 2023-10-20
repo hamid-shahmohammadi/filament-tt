@@ -2,6 +2,24 @@
 ```
 php artisan make:filament-page AttachProduct --resource=ProductResource --type=custom
 ```
+## ProductResource
+```
+->actions([
+    Tables\Actions\EditAction::make(),
+    Tables\Actions\Action::make('attach')->label('attach')
+    ->url(fn (Model $record): string => route('filament.admin.resources.products.Attach',  ['record' => $record]))
+])
+
+public static function getPages(): array
+{
+    return [
+        'index' => Pages\ListProducts::route('/'),
+        'create' => Pages\CreateProduct::route('/create'),
+        'edit' => Pages\EditProduct::route('/{record}/edit'),
+        'Attach' => Pages\AttachProduct::route('/{record}/attach'),
+    ];
+}   
+```
 
 ## AttachProduct
 ```
