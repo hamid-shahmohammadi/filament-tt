@@ -140,3 +140,10 @@ public $record;
 
 </x-filament-panels::page>
 ```
+## Attach
+```
+public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
+```
