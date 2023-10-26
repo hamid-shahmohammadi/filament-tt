@@ -1,6 +1,9 @@
 <x-filament-panels::page>
     <h2>{{ $product->name }}</h2>
-
+    @if ($flash)
+        <div class="bg-green-400 text-right text-white p-3 rounded">{{$flash}}</div>
+    @endif
+    @error('photo') <span class="error bg-red-400 text-white p-3 rounded">{{ $message }}</span> @enderror
     <form wire:submit.prevent="uploadFile" />
     <div class="flex items-center justify-center w-full">
         <label for="dropzone-file"
