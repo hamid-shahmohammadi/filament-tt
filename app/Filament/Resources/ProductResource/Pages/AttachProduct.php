@@ -25,7 +25,8 @@ class AttachProduct extends Page
 
     public function mount($record)
     {
-        $this->product = Product::find($record);
+        $this->product = Product::with('attaches')->find($record);
+        
     }
 
     public function uploadFile()
