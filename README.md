@@ -27,3 +27,9 @@ public function forceDelete(User $user, Category $category): bool
         return $user->hasRole('Admin');
     }
 ```
+## app/Providers/AuthServiceProvider.php
+```
+protected $policies = [
+        User::class => UserPolicy::class,
+    ];
+```
