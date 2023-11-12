@@ -28,12 +28,12 @@ class RoleResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')
-                ->minLength(2)
-                ->maxLength(255)->unique(ignoreRecord:true),
+                    ->minLength(2)
+                    ->maxLength(255)->unique(ignoreRecord: true),
                 Select::make('permissions')
-                ->multiple()
-                ->relationship('permissions','name')
-                ->preload(),
+                    ->multiple()
+                    ->relationship('permissions', 'name')
+                    ->preload(),
 
             ]);
     }
@@ -45,8 +45,8 @@ class RoleResource extends Resource
                 TextColumn::make('id')->sortable(),
                 TextColumn::make('name')->label('نام'),
                 TextColumn::make('created_at')
-                ->dateTime('d-M-Y')
-                ->sortable()
+                    ->dateTime('d-M-Y')
+                    ->sortable()
 
             ])
             ->filters([
@@ -54,6 +54,7 @@ class RoleResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -79,5 +80,9 @@ class RoleResource extends Resource
             'create' => Pages\CreateRole::route('/create'),
             'edit' => Pages\EditRole::route('/{record}/edit'),
         ];
+    }
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->where('name','!=','Admin');
     }
 }
