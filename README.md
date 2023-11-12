@@ -22,4 +22,8 @@ public static function getEloquentQuery(): Builder
         }
         return false;
     }
+public function forceDelete(User $user, Category $category): bool
+    {
+        return $user->hasRole('Admin');
+    }
 ```
