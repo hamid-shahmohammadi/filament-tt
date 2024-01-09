@@ -33,3 +33,40 @@ class Customer extends Authenticatable
 {
     use HasApiTokens,HasFactory;
 ```
+## /home/shah/sec/bt-10/config/auth.php
+```
+'guards' => [
+    'web' => [
+        'driver' => 'session',
+        'provider' => 'users',
+    ],
+    'customer' => [
+        'driver' => 'session',
+        'provider' => 'customers',
+    ],
+],
+'providers' => [
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User::class,
+    ],
+    'customers' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Customer::class,
+    ],       
+],
+'passwords' => [
+    'users' => [
+        'provider' => 'users',
+        'table' => 'password_reset_tokens',
+        'expire' => 60,
+        'throttle' => 60,
+    ],
+    'customers' => [
+        'provider' => 'customers',
+        'table' => 'password_reset_tokens',
+        'expire' => 60,
+        'throttle' => 60,
+    ],
+],
+```
