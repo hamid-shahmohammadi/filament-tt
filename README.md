@@ -4,8 +4,7 @@
 Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->string('name',64);
-            $table->string('family',64);
-            $table->string('father',16)->nullable();
+            $table->string('family',64);          
             $table->string('email',64)->unique();
             $table->string('username',64)->unique();
             $table->string('password',128);         
