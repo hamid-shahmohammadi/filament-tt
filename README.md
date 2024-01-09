@@ -14,8 +14,9 @@ Schema::create('customers', function (Blueprint $table) {
     $table->timestamps();
 });
 ```
-## 
+
 ## terminal
+
 ```
 php artisan make:seeder CustomerSeeder
 ```
