@@ -15,4 +15,15 @@ Schema::create('customers', function (Blueprint $table) {
             $table->timestamps();
         });
 ```
-## php artisan make:filament-page CustomerLogin
+## terminal
+```
+php artisan make:filament-panel customer
+```
+## /home/shah/sec/bt-10/app/Providers/Filament/CustomerPanelProvider.php
+```
+   return $panel
+            ->id('customer')
+            ->path('customer')
+            ->login()
+            ->authGuard('customer')
+```
