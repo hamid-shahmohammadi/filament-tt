@@ -16,15 +16,19 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        $user = User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@admin.com',
+        // $user = User::factory()->create([
+        //     'name' => 'Admin',
+        //     'email' => 'admin@admin.com',
+        // ]);
+        // User::factory()->create([
+        //     'name' => 'User',
+        //     'email' => 'user@user.com',
+        // ]);
+        // $role = Role::create(['name' => 'Admin']);
+        // $user->assignRole($role);
+
+        $this->call([
+            CustomerSeeder::class
         ]);
-        User::factory()->create([
-            'name' => 'User',
-            'email' => 'user@user.com',
-        ]);
-        $role = Role::create(['name' => 'Admin']);
-        $user->assignRole($role);
     }
 }
