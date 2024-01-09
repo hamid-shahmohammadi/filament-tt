@@ -15,6 +15,31 @@ Schema::create('customers', function (Blueprint $table) {
             $table->timestamps();
         });
 ```
+## 
+## terminal
+```
+php artisan make:seeder CustomerSeeder
+```
+## /home/shah/sec/bt-10/database/seeders/CustomerSeeder.php
+```
+$faker = Factory::create();
+foreach (range(1, 10) as $index) {
+    DB::table('customers')->insert([
+        'name' => $faker->firstName,
+        'family' => $faker->lastName,
+        'email' => $faker->email,
+        'username' => random_int(1000000000, 9999999999),
+        'national_code' => random_int(1000000000, 9999999999),
+        'password' => Hash::make('password'),
+        'active' => true
+    ]);
+}
+## /home/shah/sec/bt-10/database/seeders/DatabaseSeeder.php
+```
+$this->call([
+    CustomerSeeder::class
+]);
+```
 ## terminal
 ```
 php artisan make:filament-panel customer
