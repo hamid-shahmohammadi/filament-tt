@@ -34,6 +34,7 @@ foreach (range(1, 10) as $index) {
         'active' => true
     ]);
 }
+```
 ## /home/shah/sec/bt-10/database/seeders/DatabaseSeeder.php
 ```
 $this->call([
