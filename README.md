@@ -27,3 +27,9 @@ php artisan make:filament-panel customer
             ->login()
             ->authGuard('customer')
 ```
+## /home/shah/sec/bt-10/app/Models/Customer.php
+```
+class Customer extends Authenticatable
+{
+    use HasApiTokens,HasFactory;
+```
