@@ -1,3 +1,5 @@
+## php artisan make:filament-page CustomerLogin
+
 ## /home/shah/sec/bt-10/app/Filament/Customer/Pages/CustomerLogin.php
 ```
 <?php
