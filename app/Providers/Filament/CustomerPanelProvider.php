@@ -2,7 +2,7 @@
 
 namespace App\Providers\Filament;
 
-
+use App\Filament\Customer\Pages\CustomerLogin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -26,7 +26,7 @@ class CustomerPanelProvider extends PanelProvider
         return $panel
             ->id('customer')
             ->path('customer')
-            ->login()
+            ->login(CustomerLogin::class)
             ->colors([
                 'primary' => Color::Amber,
             ])
