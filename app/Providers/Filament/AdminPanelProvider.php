@@ -27,6 +27,10 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            // ->brandName('Iran Laravel')
+            // ->brandLogo(asset('images/favicon-32x32.png'))
+            ->brandLogo(fn () => view('filament.admin.logo'))
+            ->favicon(asset('images/favicon.ico'))
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->colors([
                 'primary' => Color::Amber,
